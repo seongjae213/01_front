@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        fieldset{
+            border: 2px solid;
+            width: 700px;
+            box-sizing: border-box;
+        }
+        input{
+            margin: 5px;
+        }
+        #travel{
+            margin-left: 96px;
+        }
+        #computer{
+            margin-left: 26px;
+        }
+        #cartoon{
+            margin-left: 21px;
+        }
+
+        #category{
+            margin-top: 30px;
+        }
+        #result{
+            border: 1px solid red;
+            width: 700px; height: 150px;
+        }
+
+
+    </style>
+</head>
+
+<body>
+    <fieldset>
+        <legend>취미</legend>
+        <label><input onchange="allCheck();" name="box" type="checkbox" id="all" value="전체선택"></input>전체선택</label>
+        <label><input onclick="boxCheck();" name="box" type="checkbox" id="general" value="종합"></input>종합</label>
+        <label><input onclick="boxCheck();" name="box" type="checkbox" id="novel" value="소설"></input>소설</label>
+        <label><input onclick="boxCheck();" name="box" type="checkbox" id="essay" value="에세이"></input>시/에세이</label>
+        <label><input onclick="boxCheck();" name="box" type="checkbox" id="economy" value="경제/경영"></input>경제/경영</label>
+        <label><input onclick="boxCheck();" name="box" type="checkbox" id="develop" value="자기계발"></input>자기계발</label>
+        <label><input onclick="boxCheck();" name="box" type="checkbox" id="child" value="아동"></input>아동</label><br>
+        <label><input onclick="boxCheck();" name="box" type="checkbox" id="travel" value="여행"></input>여행</label>
+        <label><input onclick="boxCheck();" name="box" type="checkbox" id="science" value="과학"></input>과학</label>
+        <label><input onclick="boxCheck();" name="box" type="checkbox" id="history" value="역사/문화"></input>역사/문화</label>
+        <label><input onclick="boxCheck();" name="box" type="checkbox" id="foreign" value="외국어"></input>외국어</label>
+        <label><input onclick="boxCheck();" name="box" type="checkbox" id="computer" value="컴퓨터"></input>컴퓨터</label>
+        <label><input onclick="boxCheck();" name="box" type="checkbox" id="cartoon" value="만화"></input>만화</label>
+    </fieldset>
+
+    <script>
+
+        function allCheck() {
+            let all = document.getElementById("all");
+            let hobby = document.getElementsByName("box");
+            for (let i = 0; i < hobby.length; i++) {
+                hobby[i].checked = all.checked;
+            }
+        }
+
+        function boxCheck() {
+            let hobbies = document.getElementsByName("box");
+            let all = document.getElementById("all");
+            
+            let entire = 0;  
+
+            //all박스를 제외한 나머지 박스들 중 체크된 것들만 entire로 값을 새기
+            for (let i = 1; i < hobbies.length; i++) {
+                if (hobbies[i].checked == true) {
+                    entire++;
+                    console.log(entire);
+                }
+            }
+
+            if (entire == 12) { //entire가 12라는 건 모든 박스가 선택되었기에 all 체크
+                document.getElementById("all").checked = true;
+            }else{      //entire가 12가 아니면 반드시 all 해제
+                document.getElementById("all").checked = false;
+            }
+        }
+
+
+    </script>
+
+
+    <button onclick="select();" id="category">카테고리 선택</button>
+    <div id="result"></div>
+
+    <script>
+        function select(){
+            let select = document.getElementsByName("box");
+            let textBox = document.getElementById("result");
+            textBox.innerHTML = null;
+            for(let i = 1; i < select.length; i++ ){
+                if(select[i].checked==true){
+                    textBox.innerHTML = textBox.innerHTML + " " + select[i].value;
+                }
+            }
+        }
+    </script>
+
+
+
+
+</body>
+
+</html>

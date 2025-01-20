@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <!-- <button onclick="calcAge();">나이 입력</button>
+    <p id="text"></p>
+
+    <script>
+        function calcAge(){
+        const year = 2025;
+        let bornYear = window.prompt("출생 연도는?");
+        let age = year - bornYear + 1;
+        document.getElementById("text").innerHTML = age + "살 입니다."
+        }
+    </script> -->
+
+    <!-- 복습시간에 교수님께 ㄱㄱ -->
+    <span>출생연도를 먼저 입력하세요
+            <form>
+                <input type="number" name="year" id="year">
+                <button onclick="yearInput();">확인</button>
+            </form>
+    </span>
+
+    <p id="test"></p>
+
+    <script>
+        function yearInput(){
+            let age = document.getElementById("year");
+
+
+            document.getElementById("test").innerHTML = 2025 - age + "살 입니다.";
+        }
+
+    </script>
+    
+
+
+
+</body>
+</html>

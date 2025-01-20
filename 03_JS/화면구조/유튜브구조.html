@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        #youtube{
+            background-color: black;
+            border: 1px solid gray;
+            width: 1000px; height: 600px;
+        }
+
+        #header {
+            border: 1px solid gray;
+            width: 100%;
+            height: 70px;
+            display: flex;
+        }
+        #logo {
+            width: 200px;
+            height: 100%;
+            display: flex;
+        }
+
+        #open {
+            background-color: gray;
+            color: white;
+            margin: auto;
+            height: 50px;
+            width: 50px;
+            text-wrap: wrap;
+        }
+
+        #logo>p {
+            border: 1px solid;
+            display: block;
+            margin: auto;
+            width: 50px;
+            height: 50px;
+            background-color: red;
+        }
+
+        #search {
+            width: 650px;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+        }
+
+        #search1 {
+            background-color: black;
+            color: white;
+            border-radius: 20px;
+            width: 400px;
+            height: 50px;
+            margin-top: 5px;
+            font-size: 20px;
+        }
+
+        #mike {
+            background-color: gray;
+            color: white;
+            font-size: 10px;
+            height: 50px;
+            width: 50px;
+            text-wrap: wrap;
+            margin-top: 7.5px;
+            margin-left: 3px;
+        }
+
+
+        #setup {
+            display: flex;
+            width: 150px;
+            height: 100%;
+        }
+        #setup1{
+            background-color: gray;
+            color: white;
+            margin: auto;
+            width: 40px; height: 40px;
+            border-radius: 50px;
+            text-align: center;
+        }
+        #login{
+            margin: auto;
+            background-color: gray;
+            color: white;
+        }
+
+
+
+        #main {
+            
+            width: 100%;
+            height: 530px;
+            display: flex;
+        }
+
+        #menu {
+            border: 1px solid gray;
+            width: 200px;
+            height: 100%;
+            box-sizing: border-box;
+
+        }
+
+        #menu>div {
+            background-color: darkred;
+            margin-top: 10px;
+            margin-left: 10px;
+
+            width: 180px;
+            height: 40px;
+        }
+
+        #content{
+            width: 800px; height: 530px;
+        }
+        #content>div{
+            background-color: darkred;
+            display: inline-block;
+            width: 200px; height: 200px;
+            margin: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="youtube">
+        <div id="header">
+            <div id="logo">
+                <input id="open" type="button" value="메뉴열기">
+                <p></p>
+            </div>
+            <div id="search">
+                <input type="text" id="search1" placeholder="검색">
+                <input type="button" id="mike" value="마이크검색">
+            </div>
+            <div id="setup">
+                <input type="button" id="setup1" value="설정">
+                <input type="button" id="login" value="로그인">
+            </div>
+        </div>
+
+        <div id="main">
+            <div id="menu">
+                <div id="menu1"></div>
+                <div id="menu2"></div>
+                <div id="menu3"></div>
+            </div>
+            <div id="content">
+                <div id="content1"></div>
+                <div id="content2"></div>
+                <div id="content3"></div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

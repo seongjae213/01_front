@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Window 객체</title>
+    <style>
+    </style>
+</head>
+
+<body>
+    <h1>Window 객체</h1>
+    <p>
+        window객체는 자바스크립트에서 최상위 객체<br>
+        BOM과 DOM으로 나뉨
+    </p>
+    <ul>
+        <li>BOM (Browser Object Model) : location (주소창 관련), screen (창 관련)
+            , navigator(브라우저 관련), history(페이지 기록 관련)
+        </li>
+        <li>
+            DOM(Document Object Model) : document
+        </li>
+    </ul>
+
+    <br>
+    <h3>[window.]open("url주소", "창이름", "창의특징")</h3>
+    <button onclick="test1();">네이버</button>
+
+    <script>
+        function test1() {
+            console.log(window);
+
+            window.open("http://www.naver.com", "네이버열기", "width=500", "height=500", "location=yes"
+                , "toolbar=yes", "scrollbars=no"
+            );
+            /* 
+                window.open(매개변수1,매개변수2,매개변수3);
+
+                매개변수1 : 새 창에서 열고자하는 url 주소
+                매개변수2 : 창 이름. 해당 창 이름으로 같은 창이 열려있으면 새로열리지 않고 열려있는 창을 표시
+                매개변수3 : 새 창의 너비,높이, 주소창여부, 툴바여부 등 설정
+                            width,height  - 숫자 (px단위)
+                            location=yes/no(주소창여부), toolbar=yes/no, scrollbars=yes/no
+                            status=yes/no(상태표시줄)
+            */
+        }
+
+    </script>
+
+    <hr>
+    <h3>[window.]setTimeout(함수, 시간ms)</h3>
+    <p>
+        설정한 시간 후에 함수의 내용을 실행 (<b>한번만</b>)
+    </p>
+
+    <button onclick="test2();">실행</button>
+
+    <script>
+        function test2() {
+            // console.log("---------시작--------");
+            // setTimeout(function(){
+            //     console.log("실해애애애애앵");
+            // },5*1000);
+            // console.log("---------끝난다--------");
+
+            // 팝업창을 하나 띄우고, 해당 팝업에서 알림창을 띄움
+            // 3초 후에 팝업창 종료 close()
+            const myWindow = window.open();
+            myWindow.alert("hi");
+            myWindow.setTimeout(function () {
+                myWindow.close();
+            }, 3000);
+        }
+    </script>
+
+    <hr>
+    <h3>[window.]setInterval(함수, 시간ms)</h3>
+    <p>
+        설정한 시간마다 함수를 실행
+    </p>
+    <button onclick="test3();">시간확인</button>
+    <div id="area1" style="border: 1px solid; height: 30px;"></div>
+    <button onclick="stop();">정지</button>
+
+    <script>
+        let timer;
+        function test3() {
+            //area1 요소에 1초마다 현재 시간정보 출력
+            // {hh:mm:ss} 형식으로 ex) 11:51:00
+            const area1 = document.getElementById("area1");
+
+            timer = setInterval(function () {
+                const now = new Date();
+                area1.innerHTML = `${now.getHours()} : ${now.getMinutes()} : ${now.getSeconds()}`;
+            }, 1000);
+        }
+        function stop() {
+            clearInterval(timer);
+        }
+    </script>
+
+    <hr>
+    <h3>window.onload</h3>
+    <p>
+        화면에 윈도우 객체의 로드가 완료되면 설정되어 있는 함수를 실행<br>
+        윈도우 객체의 로드 완료 => 모든 태그가 화면에 표시된 상태
+    </p>
+    <div id="area2"></div>
+
+    <script>
+        let area2 = document.getElementById("area2");
+        window.onload = function () {
+            setTimeout(function () {
+                area2.style = 'border : solid';
+                area2.innerHTML = "today is wednesday";
+
+            }, 3000);
+
+        }
+    </script>
+    <div id="area2"></div>
+
+    <hr>
+    <h2>BOM (Browser Object Model)</h2>
+    <h3>location 객체</h3>
+    <p>브라우저 주소창과 관련된 객체</p>
+
+    <button onclick="console.log(location);">location확인</button><br><br><br>
+
+    <a href="http://www.google.com">구글로 가자!</a>
+
+    <button onclick="location.href = 'http://www.google.com';">구글로가는방법1</button>
+    <div onclick="location.href = 'http://www.google.com';" style="cursor: pointer;">구글로 가는 방벙2</div>
+    <br><br>
+    <!-- replace 사용시 직전페이지로 이동 불가 -->
+    <button onclick="location.replace('http://www.google.com');">구글로..</button>
+    <br><br>
+    <button onclick="location.reload();">새로고침</button>
+    <button onclick="location.href = location.href">새로고침2</button>
+
+    <hr>
+
+    <h2>DOM (Document Object Model)</h2>
+    <p>
+        HTML에 있는 각각의 요소들을 노드(Node)라고 표현함<br>
+        요소 노드(Element node) : 태그 그 자체를 의미<br>
+        텍스트 노드(Text node) : 태그 내의 내용 부분을 의미
+    </p>
+
+    <div>
+        <h1></h1>
+        <ul>
+            <li>a</li>
+            <li>b</li>
+        </ul>
+    </div>
+
+    <hr>
+    <h3>노드(요소) 생성 관련 메소드</h3>
+    <h4>텍스트 노드가 존재하는 노드 생성(시작태그, 종료태그)</h4>
+    <button onclick="test4();">노드 생성</button>
+    <div id="area4"></div>
+
+    <script>
+        function test4(){
+            const area4 = document.getElementById("area4");
+            // <h4>안녕? 반가워!</h4> => 노드 추가
+
+            // 1) innerHTML 속성 사용 => 문자열 형태로 만드는 방법
+            // area4.innerHTML = "<h4>안녕? 반가워!</h4>";
+
+            // document 객체 사용
+            // 요소 노드 생성 (element) 
+            // => element = document.createElement("태그명") => <태그></태그>
+            // 텍스트 노드 생성(textnode)
+            // => textnode = document.createTextNode("내용") => 내용
+            // 요소 노드에 텍스트 노드 결합
+            // => element.appendchild(textnode) => <태그>내용</태그>
+            const element = document.createElement("h4");
+            const text = document.createTextNode("안녕? 반가워!");
+            element.appendChild(text);
+            area4.appendChild(element);
+
+            const eleMark = document.createElement("mark");
+            const markText = document.createTextNode("강조태그!");
+            const eleB = document.createElement("b");
+            eleB.appendChild(markText);
+            eleMark.appendChild(eleB);
+            area4.appendChild(eleMark);
+        }
+    </script>
+
+    <br>
+    <h3>
+        텍스트 노드가 존재하지 않는 요소 노드 생성
+        (시작태그만 존재하는 태그)
+    </h3>
+    <button onclick="test5();">노드 생성</button>
+    <div id="area5"></div>
+
+    <script>
+        function test5(){
+            // <img><hr><br>
+            const imgEle = document.createElement("img");
+            imgEle.src = "images/music.jpg";
+            imgEle.alt = "이미지 찾지 못함! (음악 이미지)";
+            imgEle.width = '50';
+            imgEle.height = '50';
+            
+            document.getElementById("area5").appendChild(imgEle);
+        }
+    </script>
+
+    <br>
+    <h3>노드 삭제 관련 메소드</h3>
+    <button onclick="test6();">노드 삭제</button>
+    <script>
+        function test6() {
+            const area5 = document.getElementById("area5");
+            
+            //삭제하고자 하는 요소노드.remove();
+
+            //#area5 요소의 첫번째 자식 노드 제거
+            const imgList = document.querySelectorAll("#area5 img");
+
+            for(let img of imgList){
+                img.remove();
+            }
+        }
+    </script>
+
+
+
+
+
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</body>
+
+</html>

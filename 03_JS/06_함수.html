@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>함수</title>
+
+    <style>
+        .area {
+            width: 500px;
+            border: 1px solid;
+            height: 200px;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <h1>함수(function)</h1>
+    <h3> 선언적 함수</h3>
+    <pre>
+        function 함수명([매개변수,매개변수,...]){
+            //함수 호출시 실행할 코드
+
+
+            [return 결과값;]
+        }
+    </pre>
+    <!-- test1(); test1 함수 호출 -->
+    <button onclick="test1();">클릭금지!</button>
+    <div class="area" id="area1"></div>
+
+    <script>
+        function test1() {
+            document.getElementById("area1").innerHTML += "test1함수 호출<br>";
+        }
+
+    </script>
+
+    <hr>
+
+    <h3>이름이 없는 함수</h3>
+    <pre>
+        변수|속성 = function([매개변수, 매개변수, ...]) {
+            //함수 호출 시 실행할 코드
+
+            [return 결과값;]
+        }
+
+        => 특정 변수나 속성에 대입되는 함수
+        (주로 이벤츠 핸들러 작성 시 사용)
+    </pre>
+
+    <button id="btn1">실행</button>
+    <button id="btn2">스타일 변경</button>
+    <div class="area" id="area2"></div>
+
+    <script>
+        //id 속성이 btn1인 요소 접근
+        const btn1 = document.querySelector("#btn1");
+        //id 속성이 btn2인 요소 접근
+        const btn2 = document.getElementById("btn2");
+
+
+        btn1.onclick = function () {
+            document.getElementById("area2").innerHTML += "이벤트 핸들러 실행됨!<br>";
+        }
+
+        btn2.onclick = function () {
+            let back = document.getElementById("area2");
+
+            if (back.style.backgroundColor == "yellow") {
+                back.style.backgroundColor = "skyblue";
+            } else {
+                back.style.backgroundColor = "yellow";
+            }
+        }
+
+        // 버튼이 클릭된것처럼 미리 세팅해놓고 싶을때
+        btn2.click();
+    </script>
+
+    <hr>
+
+    <h3>함수의 매개변수</h3>
+
+    <button onclick="test2('안녕하세요!');">실행</button>
+    <button onclick="test2('20');">실행</button>
+    <button onclick="test2([1,2,3,4,5]);">실행</button>
+    <button onclick="test2(true);">실행</button>
+    <button onclick="test2(prompt('아무거나 입력하세요.'));">실행</button>
+    <button onclick="test2('지금은','마지막시간');">실행</button>
+    <div class="area" id="area3"></div>
+
+    <script>
+        //value라는 이름의 매개변수
+        function test2(value, y, z) {
+            document.getElementById("area3").innerHTML += value + "<br>";
+        }
+    </script>
+
+    <h4>매개변수 관련 arguments 배열</h4>
+
+    함수 호출 시 전달되는 값은 내부적으로 arguments 배열에 담겨짐<br>
+    arguments : 함수마다 내부적으로 하나씩 존재함
+
+    <button onclick="test3(1,3,4,30,55,300,500);">실행</button>
+    <div class="area" id="area4"></div>
+
+    <script>
+        function test3() {
+            console.log(arguments);
+            console.log(arguments[2]);
+
+            let result = 0;
+            for (let i = 0; i < arguments.length; i++) {
+                result += arguments[i];
+            }
+            document.getElementById("area4").innerHTML = result;
+        }
+    </script>
+
+    <br>
+
+    <h4> 매개변수에 this 전달하기</h4>
+    <p>
+        this : 현재 이벤트가 발생한 요소 객체
+    </p>
+    <button onclick="test4(this)">버튼1</button>
+    <button onclick="test4(this)">버튼2</button>
+    <input type="button" value="버튼3" onclick="test4(this)">
+
+    <script>
+        function test4(target) {
+            console.log(target);
+            // id속성으로 접근한 요소객체와 같은 정보를 얻음
+
+            target.innerHTML = "클릭됨";
+            target.value = "클릭됨";
+
+            target.style.backgroundColor = "yellow";
+        }
+    </script>
+
+    <h2>함수의 리턴</h2>
+    <h3>일반적인 값 리턴</h3>
+
+    <button onclick="test5();">실행</button>
+    <div class="area" id="area5"></div>
+
+    <script>
+        function test5() {
+            // document.getElementById("area5").innerHTML = sample();
+            document.getElementById("area5").innerHTML = random();
+        }
+        function sample() {
+            return "하윙";
+        }
+        function random() {
+            // 1~100사이 랜덤값 반환
+            return parseInt(Math.random() * 100 + 1);
+        }
+    </script>
+    <br>
+    <h3>익명함수를 리턴</h3>
+    <label for="userName">이름 : </label>
+    <input type="text" id="userName">
+    <button onclick="test6();">실행</button>
+
+    <script>
+        function test6() {
+            // userName 속성에 입력된 값을 콘솔에 출력
+            // let name = document.querySelector("#userName").value;
+            // console.log(name);
+
+            const getName = function () {
+                let name = document.querySelector("#userName").value;
+                console.log(name);
+            }
+
+            return getName();
+        }
+
+        let arr = [{name: "성재",age: 26,phone: "0103333"}];
+    </script>
+
+
+
+
+
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</body>
+
+</html>

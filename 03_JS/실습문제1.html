@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #result{
+            border: 1px solid red;
+            width: 700px; height: 150px;
+        }
+
+        #table{
+            width: 700px;
+        }
+
+    </style>
+
+</head>
+
+<body>
+    <!-- <fieldset>
+        <legend>취미</legend>
+        <label><input onchange="allChk()" type="checkbox" id="all" value="전체선택" name="box"></input>전체선택</label>
+        <label><input onclick="hobbyClick()" type="checkbox" id="general" value="종합" name="box"></input>종합</label>
+        <label><input onclick="hobbyClick()" type="checkbox" id="novel" value="소설" name="box"></input>소설</label>
+        <label><input onclick="hobbyClick()" type="checkbox" id="essay" value="시/에세이" name="box"></input>시/에세이</label>
+        <label><input onclick="hobbyClick()" type="checkbox" id="economy" value="경제/경영"
+                name="box"></input>경제/경영</label>
+        <label><input onclick="hobbyClick()" type="checkbox" id="develop" value="자기계발"
+                name="box"></input>자기계발</label>
+        <label><input onclick="hobbyClick()" type="checkbox" id="child" value="아동" name="box"></input>아동</label><br>
+        <label><input onclick="hobbyClick()" type="checkbox" id="travel" value="여행" name="box"></input>여행</label>
+        <label><input onclick="hobbyClick()" type="checkbox" id="science" value="과학" name="box"></input>과학</label>
+        <label><input onclick="hobbyClick()" type="checkbox" id="history" value="역사/문화"
+                name="box"></input>역사/문화</label>
+        <label><input onclick="hobbyClick()" type="checkbox" id="foreign" value="외국어" name="box"></input>외국어</label>
+        <label><input onclick="hobbyClick()" type="checkbox" id="computer" value="컴퓨터"
+                name="box"></input>컴퓨터</label>
+        <label><input onclick="hobbyClick()" type="checkbox" id="cartoon" value="만화" name="box"></input>만화</label>
+    </fieldset>
+
+    <button onclick="selectCategory();" id="category">카테고리 선택</button>
+    <div id="result"></div>
+
+    <script>
+        function allChk() {
+            const allChk = document.getElementById("all");
+
+            const hList = document.getElementsByName("box");
+
+            for (let h of hList) {
+                h.checked = allChk.checked;
+            }
+        }
+
+        function hobbyClick() {
+            let isChecked = true;
+
+            const hList = document.getElementsByName("box");
+            for (let h of hList) {
+                if (h.value == "전체선택") {
+                    continue;
+                }
+
+                if (h.checked == false) {
+                    isChecked = false;
+                    break;
+                }
+            }
+            document.getElementById("all").checked = isChecked;
+        }
+
+        function selectCategory() {
+            const hList = document.getElementsByName("box");
+
+            let result = "";
+
+            for(let h of hList){
+                //전체선택은 넘어가도록
+                if(h.value == "전체선택"){
+                    continue;
+                }
+                if(h.checked == true){
+                    result = result + " " + h.value;
+                }
+            }
+            document.getElementById("result").innerHTML = result;
+        } -->
+
+        <table id="table" border="1">
+            <tr>
+                <td><label><input  name="box" type="checkbox"></input>전체선택</label></td>
+                <td><label><input  name="box" type="checkbox"></input>종합</label></td>
+                <td><label><input  name="box" type="checkbox"></input>소설</label></td>
+                <td><label><input  name="box" type="checkbox"></input>시/에세이</label></td>
+                <td><label><input  name="box" type="checkbox"></input>경제/경영</label></td>
+                <td><label><input  name="box" type="checkbox"></input>자기계발</label></td>
+                <td><label><input  name="box" type="checkbox"></input>아동</label></td>
+            </tr>
+            <tr>
+                <td colspan="2"><label><input></input>여행</label></td>
+                <td><label><input></input>과학</label></td>
+                <td><label><input></input>역사/문화</label></td>
+                <td><label><input></input>외국어</label></td>
+                <td><label><input></input>컴퓨터</label></td>
+                <td><label><input></input>만화</label></td>
+            </tr>
+
+        </table>
+
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>

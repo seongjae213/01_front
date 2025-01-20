@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS - 레이아웃 1</title>
+
+    <style>
+        .size-text{
+            border: 10px solid hotpink;
+        }
+        #size1{
+            width: 500px;
+            height: 300px;
+        }
+        #size2{
+            width: 50%;
+            height: 150px;
+        }
+
+        .red{ background-color: red;}
+        .skyblue{ background-color: skyblue;}
+        .green{ background-color: green;}
+        .pink{ background-color: pink;}
+        .violet{ background-color: violet;}
+
+        .display-test{
+            border: 1px solid;
+            width: 100px;
+            height: 100px;
+        }
+
+        .inline{
+            display: inline;
+        }
+        
+        .inline-block{
+            display: inline-block;
+        }
+
+        .block{
+            display: block;
+        }
+
+    </style>
+
+
+
+</head>
+<body>
+    <!-- 
+        *블럭요소 : 한 줄로 영역을 차지하는 요소 => 줄바꿈 처리o (div,p,pre)
+        *인라인요소: content 영역만 차지하는 요소 => 줄바꿈 X  (span, small, label, input,...)
+        *요소: content영역 + padding영역 + border영역
+         요소 바깥쪽 영역 => margin영역(바깥쪽 간격)
+    -->
+
+    <h1>레이아웃 관련 스타일</h1>
+    <h3>width, height</h3>
+    <p>기본적으로 내용을 차지하는 content영역의 가로, 세로 길이를 조절하는 스타일 속성</p>
+    
+    <h4>고정크기(px)</h4>
+    <div class="size-text" id="size1"></div>
+    
+    <h4>가변크기(%)</h4>
+    <div class="size-text" id="size2"></div>
+    <hr>
+
+    <h3>display : 화면 배치 방법 변경</h3>
+    <pre>
+        선택자 {
+            display: inline | block | inline-block;
+        }
+    </pre>
+
+    <h4>display: inline</h4>
+    <div class="display-test inline red">강강강</div>
+    <div class="display-test inline skyblue">낭낭낭</div>
+    <div class="display-test inline green">콩콩콩</div>
+    <p>display: inline 스타일은 가로,세로 길이 지정 불가</p>
+    <br><br>
+
+    <h4>display: inline-block</h4>
+    <div class="display-test inline-block pink">강아지</div>
+    <div class="display-test inline-block red">토끼</div>
+    <div class="display-test inline-block violet">햄스터</div>
+    <br>
+
+    <p>
+        display: inline-block 스타일을 적용하게 되면<br>
+        인라인처럼 옆으로 배치 + block처럼 width,height설정 가능
+    </p>
+
+    <br><br>
+
+    <h4>display : block</h4>
+    <span class="display-test block green">인라인1</span>
+    <span class="display-test block skyblue">인라인2</span>
+    <span class="display-test block pink">인라인3</span>
+
+
+    
+</body>
+</html>

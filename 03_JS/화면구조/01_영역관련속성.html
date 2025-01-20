@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>영역 관련 속성</title>
+
+    <style>
+        .wrap{
+            width:500px; height: 200px;
+            border: 5px solid skyblue;
+            display: flex;
+        }
+
+        #con {
+            width:500px; height: 200px;
+            border: 5px solid skyblue;
+        }
+
+        .a1, .a2, .a3 {
+            border-style: solid;
+            width: 100%;            
+            box-sizing: border-box;
+        }
+
+        .a1{height: 25%; border-color: red;}
+        .a2{height: 50%; border-color: blue; display: flex;}
+        .a3{height: 25%; border-color: red;}
+
+        .a2-1,.a2-2{
+            border: 1px solid black; 
+            height: 100%;
+            box-sizing: border-box;
+        }
+        .a2-1{ width: 75%;}
+        .a2-2{ width: 25%;}
+
+
+
+
+        .area1, .area2{
+            box-sizing: border-box;
+            width: 100%; height: 50%;
+            border: 5px solid plum;
+        }
+        .area3,.area4{
+            /* display: inline-block;  공백이 있으면 다음줄에 표시될 수 있음 */
+            box-sizing: border-box;
+            border: 5px solid brown;
+            height: 100%;
+        }
+        .area3{ width: 40%; }
+        .area4{ width: 60%; }
+        
+    </style>
+
+
+</head>
+<body>
+    <h1>영역 관련 속성</h1>
+
+    <div class="area">
+        <ol>
+            <li>content영역 : 요소 내의 내용표시 영역</li>
+            <li>border영역 : 요소 내의 테두리 영역</li>
+            <li>padding영역 : content영역과 border영역 사이의 여백</li>
+            <li>margin영역 : 요소 바깥쪽 영역. 다른 요소와의 간격</li>
+        </ol>
+    </div>
+    <hr>
+
+    <h2>div 안에 여러 개의 div 포함</h2>
+    <h3>위 아래로 2등분 하기</h3>
+    <div class="wrap">
+        <div class="area1"></div>
+        <div class="area2"></div>
+    </div>
+
+    <h3>좌 우로 2등분 하기</h3>
+    <div class="wrap" id="df">
+        <div class="area3"></div>
+        <div class="area4"></div>
+    </div>
+
+    <h3>연습하기</h3>
+    <div id="con">
+        <div class="a1"></div>
+        <div class="a2">
+            <div class="a2-1"></div>
+            <div class="a2-1"></div>
+        </div>
+        <div class="a3"></div>
+    </div>
+
+
+</body>
+</html>

@@ -1,0 +1,134 @@
+/* body{background-color: pink;} */
+/* 속성 선택자 */
+/* div 요소 중 name 속성 값이 "name1"와 일치하는 요소 */
+div[name=name1] {
+    background-color: aqua;
+}
+
+/* div요소중 name속성값에 name1이 포함되어있는 요소(전체단어) */
+div[name~=name1] {
+    background-color: blueviolet;
+}
+
+/* class속성값이 class로 시작하는 요소 */
+div[class|=class] {
+    background-color: brown;
+}
+
+/* name에 na가 들어가있을 */
+div[name^=na] {
+    background-color: chartreuse;
+}
+
+/* class에 ss로 끝나는거 */
+div[class$=ss] {
+    background-color: aqua;
+}
+
+/* class에 i가 포함 */
+div[class*=i] {
+    background-color: darkblue;
+}
+
+/* class속성이 div-class인 요소 중에 name 속성 값에 name3가 포함된 요소의 배경 색*/
+div[class=div-class][name*=name3] {
+    background-color: rgb(210, 230, 33);
+}
+
+/* tag + class + class */
+
+.div-class[name*=name3] {
+    background-color: brown;
+}
+
+/* class + class */
+
+
+/* 자손 선택자와 후손 선택자 */
+/* a > b : a요소의 자손 중 b요소만 모두 선택 */
+
+/* 아이디가 parent인 요소의 자손 중 h4 요소만 선택 */
+#parent>h4 {
+    background-color: cyan;
+}
+
+/* 아이디가 parent인 요소의 모든 자손 */
+#parent>* {
+    background-color: crimson;
+}
+
+/* 아이디가 parent인 요소의 자소 중 ul 요소의 자손 중 li요소*/
+#parent>ul>li {
+    background-color: blueviolet;
+}
+
+/* 아이디가 parent인 요소의 후손들의 글자색 변경 */
+#parent * {
+    color: black;
+}
+
+/* 아이디가 parent인 요소의 후손 중 li요소만 선택 */
+#parent li {
+    color: brown;
+}
+
+
+/* 동위 선택자 */
+/* 아이디가 sibling인 요소 바로 뒤에 오는 div 요소 하나만 선택 */
+#sibling+div {
+    background-color: crimson;
+}
+
+#sibling+ul {
+    background-color: dodgerblue;
+}
+
+/* 바로 뒤에 오는 요소가 ul이 아니라서 선택되지 않음 (정말 완전 바로 뒤여야함) */
+
+#sibling~ul {
+    background-color: deepskyblue;
+}
+
+/* 상태 선택자 */
+/* input 요소의 type 속성값이 checkbox인 요소 중 체크된 상태의 요소 선택 */
+
+input[type=checkbox]:checked {
+    width: 30px;
+    height: 30px;
+}
+
+input[type=checkbox]:checked+label {
+    font-size: 30px;
+}
+
+/* input 요소 중 name 속성 값이 user로 시작하는 요소 초점 선택 */
+input[name^=user]:focus {
+    background-color: navy;
+    color: white;
+}
+
+button:enabled {
+    background-color: deeppink;
+}
+
+button:disabled {
+    background-color: deeppink;
+    opacity: 0.5;
+    /* 0 ~ 1 : 0이 투명 1이 선명 */
+}
+
+.area {
+    background-color: greenyellow;
+    width: 100px;
+    height: 100px;
+    cursor: pointer;
+}
+
+
+#active-test:active {
+    background-color: palevioletred;
+}
+
+#hover-test:hover {
+    background-color: skyblue;
+}
